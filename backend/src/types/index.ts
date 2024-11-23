@@ -1,8 +1,20 @@
-export type UserData = {
-  firstName: string;
-  lastName: string;
-  profileName: string;
+export type registerData = {
+  username: string;
   email: string;
+  password: string;
+};
+
+export type UserDatabaseData = {
+  username: string;
+  email: string;
+  password: string;
+  created_at: string;
+  id?: number | string;
+};
+
+export type UserData = {
+  username: string;
+  // email: string;
   id?: number | string;
 };
 

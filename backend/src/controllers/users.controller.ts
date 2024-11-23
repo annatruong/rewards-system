@@ -2,20 +2,13 @@ import { Request, Response } from "express";
 import { users } from "services";
 
 export const registerUser = async (req: Request, res: Response) => {
-  const { profileName, firstName, lastName, email, password, confirmPassword } =
-    req.body;
+  const { username, email, password, confirmPassword } = req.body;
   if (password !== confirmPassword) {
     res.status(400).send("Passwords do not match");
   }
   try {
     // create token
-    const accessToken = await users.registerUser({
-      profileName,
-      firstName,
-      lastName,
-      email,
-      password,
-    });
+    const accessToken = await users.registerUser({ username, email, password });
 
     // set token in cookie
     res.cookie("access_token", accessToken, {

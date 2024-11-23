@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ES2018", // JavaScript version
-    "module": "ESNext", // Use ESM
-    "moduleResolution": "node", // Node.js ESM resolution
+    "target": "ESNext", // Latest JS features
+    "module": "commonjs", // Use ES module syntax
+    "moduleResolution": "node",
     "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,

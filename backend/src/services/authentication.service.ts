@@ -3,10 +3,10 @@ import * as jwt from "libs/auth";
 import argon2 from "argon2";
 
 export const login = async ({
-  email,
+  username,
   password,
 }: {
-  email: string;
+  username: string;
   password: string;
 }) => {
   try {
@@ -15,12 +15,14 @@ export const login = async ({
         namespace: "admin",
         kind: "users",
         filter: {
-          field: "email",
+          field: "username",
           operator: "=",
-          value: email,
+          value: username,
         },
       })
     )[0];
+
+    console.log(user);
 
     if (!user)
       throw new Error(
@@ -29,10 +31,8 @@ export const login = async ({
     const matched = await argon2.verify(user.password, password);
     if (!matched) throw new Error("Incorrect password");
     const userData = {
-      firstName: user.first_name,
-      lastName: user.last_name,
-      profileName: user.profile_name,
-      email: user.email,
+      username: user.username,
+      // email: user.email,
       id: user.id,
     };
 

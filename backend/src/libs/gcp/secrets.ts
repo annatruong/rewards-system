@@ -1,11 +1,12 @@
 import { SecretManagerServiceClient } from "@google-cloud/secret-manager";
-const projectId = process.env.PROJECTID;
 
 // Instantiates a client
 const client = new SecretManagerServiceClient();
 
 const get = async (id: string) => {
+  const projectId = process.env.PROJECTID;
   const name = `projects/${projectId}/secrets/${id}/versions/latest`;
+  console.log(name);
   try {
     const [accessResponse] = await client.accessSecretVersion({ name });
     const responsePayload = accessResponse?.payload?.data?.toString();

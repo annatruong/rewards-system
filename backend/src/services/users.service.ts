@@ -2,29 +2,10 @@ import { formatISO } from "date-fns";
 import { datastore } from "libs/gcp";
 import * as jwt from "libs/auth";
 import argon2 from "argon2";
-
-interface registerData {
-  profileName: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-}
-
-interface UserDatabaseData {
-  first_name: string;
-  last_name: string;
-  profile_name: string;
-  email: string;
-  password: string;
-  created_at: string;
-  id?: number | string;
-}
+import { registerData, UserDatabaseData } from "types";
 
 export const registerUser = async ({
-  profileName,
-  firstName,
-  lastName,
+  username,
   email,
   password,
 }: registerData) => {
@@ -46,9 +27,7 @@ export const registerUser = async ({
 
     // save user data to database
     const userDatabaseData: UserDatabaseData = {
-      first_name: firstName,
-      last_name: lastName,
-      profile_name: profileName,
+      username: username,
       email,
       password: hashedPassword,
       created_at: formatISO(new Date()),
@@ -61,9 +40,7 @@ export const registerUser = async ({
     });
 
     const userData = {
-      firstName,
-      lastName,
-      profileName,
+      username,
       email,
       id: userId,
     };
