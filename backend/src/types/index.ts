@@ -14,8 +14,13 @@ export type UserDatabaseData = {
 
 export type UserData = {
   username: string;
-  // email: string;
   id?: number | string;
+};
+export type rewardData = {
+  name: string;
+  level: string;
+  created_at?: string;
+  user_id?: number;
 };
 
 interface Filter {
