@@ -1,0 +1,12 @@
+{
+  "name": "users",
+  "version": "1.0.0",
+  "description": "Users service",
+  "license": "ISC",
+  "author": "Anna Truong",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
